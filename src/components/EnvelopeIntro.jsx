@@ -32,7 +32,6 @@ export default function EnvelopeIntro({ onReveal }) {
     }
   }, [onReveal])
 
-  // Safety fallback + unmount when video ends
   const handleEnded = useCallback(() => {
     if (!revealFired.current) {
       revealFired.current = true
@@ -64,11 +63,11 @@ export default function EnvelopeIntro({ onReveal }) {
         cursor: tapped ? 'default' : 'pointer',
         opacity: fading ? 0 : 1,
         transition: fading ? `opacity ${FADE_DUR}s ease-out` : 'none',
-        // Once fading, stop blocking interaction so the site is usable beneath
         pointerEvents: fading ? 'none' : 'auto',
         WebkitTapHighlightColor: 'transparent',
       }}
     >
+      {/* Video — hidden until tapped, plays underneath poster */}
       <video
         ref={videoRef}
         src="/envelope.mp4"
@@ -87,6 +86,29 @@ export default function EnvelopeIntro({ onReveal }) {
           pointerEvents: 'none',
         }}
       />
+
+      {/* Poster image — shown before tap, fades out when video starts */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          opacity: tapped ? 0 : 1,
+          transition: 'opacity 0.5s ease',
+          pointerEvents: 'none',
+        }}
+      >
+        <img
+          src="/envelope-poster.png"
+          alt=""
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+            display: 'block',
+          }}
+        />
+      </div>
 
       {/* Tap hint */}
       <div
