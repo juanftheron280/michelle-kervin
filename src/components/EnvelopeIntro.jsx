@@ -9,7 +9,7 @@ export default function EnvelopeIntro({ onReveal }) {
   const fadeFired   = useRef(false)
   const revealFired = useRef(false)
   const [tapped,       setTapped]       = useState(false)
-  const [posterGone,   setPosterGone]   = useState(false)
+  const [videoVisible, setVideoVisible] = useState(false)
   const [fading,       setFading]       = useState(false)
   const [done,         setDone]         = useState(false)
 
@@ -19,9 +19,9 @@ export default function EnvelopeIntro({ onReveal }) {
     videoRef.current?.play()
   }, [tapped])
 
-  // Only hide the poster once the video is actually rendering frames
+  // Fade the video IN on top of the poster — never exposes a gap
   const handlePlay = useCallback(() => {
-    setPosterGone(true)
+    setVideoVisible(true)
   }, [])
 
   const handleTimeUpdate = useCallback(() => {
@@ -73,7 +73,28 @@ export default function EnvelopeIntro({ onReveal }) {
         WebkitTapHighlightColor: 'transparent',
       }}
     >
-      {/* Video — hidden until tapped, plays underneath poster */}
+      {/* Poster — permanent base layer, always visible */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          pointerEvents: 'none',
+        }}
+      >
+        <img
+          src="/envelope-poster.png"
+          alt=""
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+            display: 'block',
+          }}
+        />
+      </div>
+
+      {/* Video — fades IN on top of poster once playing, no gap possible */}
       <video
         ref={videoRef}
         src="/envelope.mp4"
@@ -91,31 +112,10 @@ export default function EnvelopeIntro({ onReveal }) {
           objectPosition: 'center',
           display: 'block',
           pointerEvents: 'none',
+          opacity: videoVisible ? 1 : 0,
+          transition: 'opacity 1s ease',
         }}
       />
-
-      {/* Poster image — shown before tap, fades out when video starts */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          opacity: posterGone ? 0 : 1,
-          transition: 'opacity 0.8s ease',
-          pointerEvents: 'none',
-        }}
-      >
-        <img
-          src="/envelope-poster.png"
-          alt=""
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
-            display: 'block',
-          }}
-        />
-      </div>
 
       {/* Tap hint */}
       <div
