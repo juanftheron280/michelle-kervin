@@ -1,0 +1,440 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Fonts ─────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Eyesome Script';
+  src: url('/fonts/Eyesome-Script.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lora';
+  src: url('/fonts/Lora-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lora';
+  src: url('/fonts/Lora-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lora';
+  src: url('/fonts/Lora-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lora';
+  src: url('/fonts/Lora-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ── Base ───────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Lora', Georgia, serif;
+  background-color: #0D0D0D;
+  color: #F4EFE6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #0D0D0D; }
+::-webkit-scrollbar-thumb { background: #C9A96E; border-radius: 3px; }
+
+/* ── Utilities ──────────────────────────────────────────── */
+.font-heading { font-family: 'Eyesome Script', cursive; }
+.font-body    { font-family: 'Lora', Georgia, serif; }
+
+.section-dark  { background-color: #0D0D0D; }
+.section-cream { background-color: #F4EFE6; }
+
+.gold-rule {
+  display: block;
+  width: 48px;
+  height: 1px;
+  background-color: #C9A96E;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: 'Lora', serif;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #C9A96E;
+}
+
+/* ── Keyframes ──────────────────────────────────────────── */
+@keyframes tapHintPulse {
+  0%, 100% { opacity: 0.45; }
+  50%       { opacity: 0.18; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes floatUp {
+  0%   { opacity: 0; transform: translateY(0px); }
+  10%  { opacity: 0.6; }
+  90%  { opacity: 0.4; }
+  100% { opacity: 0; transform: translateY(-120px); }
+}
+
+@keyframes pulseGold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,169,110,0); }
+  50%       { box-shadow: 0 0 0 6px rgba(201,169,110,0.15); }
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50%       { transform: translateY(6px); opacity: 1; }
+}
+
+@keyframes shimmerName {
+  0%   { text-shadow: 0 0 20px rgba(201,169,110,0), 0 0 0 rgba(201,169,110,0); }
+  50%  { text-shadow: 0 0 40px rgba(201,169,110,0.3), 0 0 80px rgba(201,169,110,0.1); }
+  100% { text-shadow: 0 0 20px rgba(201,169,110,0), 0 0 0 rgba(201,169,110,0); }
+}
+
+@keyframes heroEntranceFrame {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes heroEntranceNames {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroEntranceCountdown {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Scroll-reveal system ───────────────────────────────── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity  0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal="scale"] {
+  transform: scale(0.88);
+  opacity: 0;
+  transition:
+    opacity  0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal="left"] {
+  transform: translateX(-32px);
+  opacity: 0;
+  transition:
+    opacity  0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal="right"] {
+  transform: translateX(32px);
+  opacity: 0;
+  transition:
+    opacity  0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal="drop"] {
+  transform: translateY(-20px);
+  opacity: 0;
+  transition:
+    opacity  0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger delays */
+[data-delay="1"] { transition-delay: 0.10s; }
+[data-delay="2"] { transition-delay: 0.20s; }
+[data-delay="3"] { transition-delay: 0.30s; }
+[data-delay="4"] { transition-delay: 0.40s; }
+[data-delay="5"] { transition-delay: 0.50s; }
+[data-delay="6"] { transition-delay: 0.60s; }
+[data-delay="7"] { transition-delay: 0.70s; }
+[data-delay="8"] { transition-delay: 0.80s; }
+
+/* ── Hero entrance animations ───────────────────────────── */
+.hero-frame {
+  animation: heroEntranceFrame 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.hero-names {
+  animation: heroEntranceNames 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both;
+  animation-name: heroEntranceNames, shimmerName;
+  animation-duration: 0.9s, 4s;
+  animation-delay: 0.8s, 2s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1), ease-in-out;
+  animation-fill-mode: both, none;
+  animation-iteration-count: 1, infinite;
+}
+
+.hero-countdown {
+  animation: heroEntranceCountdown 1s ease 1.4s both;
+}
+
+.hero-scroll-cue {
+  animation: scrollBounce 2s ease-in-out 2.2s infinite;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+/* ── Card hover lift ────────────────────────────────────── */
+.card-hover {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Polaroid ───────────────────────────────────────────── */
+.polaroid {
+  background: #F8F4EC;
+  padding: 10px 10px 36px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.45), 0 1px 4px rgba(0,0,0,0.3);
+  transform: rotate(var(--rot, 0deg));
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+  will-change: transform;
+}
+
+.polaroid:hover {
+  transform: rotate(0deg) scale(1.04) translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.65), 0 2px 8px rgba(0,0,0,0.4);
+  z-index: 10;
+}
+
+/* ── Timeline dot pulse ─────────────────────────────────── */
+.pulse-dot {
+  animation: pulseGold 2.5s ease-in-out infinite;
+}
+
+/* ── FAQ Accordion ──────────────────────────────────────── */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-answer.open {
+  max-height: 300px;
+}
+
+/* ── Form ───────────────────────────────────────────────── */
+.form-field {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(201,169,110,0.4);
+  color: #F4EFE6;
+  font-family: 'Lora', serif;
+  font-size: 14px;
+  padding: 10px 0;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.form-field::placeholder {
+  color: rgba(244,239,230,0.35);
+  font-style: italic;
+}
+
+.form-field:focus {
+  border-bottom-color: #C9A96E;
+}
+
+.form-field-cream {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(13,13,13,0.2);
+  color: #1A1A1A;
+  font-family: 'Lora', serif;
+  font-size: 14px;
+  padding: 10px 0;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.form-field-cream::placeholder {
+  color: rgba(13,13,13,0.35);
+  font-style: italic;
+}
+
+.form-field-cream:focus {
+  border-bottom-color: #C9A96E;
+}
+
+/* ── Grain texture overlay ──────────────────────────────── */
+.grain-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px;
+}
+
+/* ── Ambient / botanical animations ────────────────────── */
+@keyframes botanicalDrift {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-7px) rotate(0.7deg); }
+}
+
+@keyframes sealFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-5px); }
+}
+
+@keyframes goldShimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 400% center; }
+}
+
+/* ── Ambient utility classes ────────────────────────────── */
+.botanical-drift {
+  animation: botanicalDrift 16s ease-in-out infinite;
+  will-change: transform;
+}
+
+.botanical-drift-slow {
+  animation: botanicalDrift 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+.botanical-drift-alt {
+  animation: botanicalDrift 18s ease-in-out 4s infinite reverse;
+  will-change: transform;
+}
+
+.seal-float {
+  animation: sealFloat 4s ease-in-out infinite;
+}
+
+.gold-rule-shimmer {
+  display: block;
+  width: 48px;
+  height: 1px;
+  margin: 0 auto;
+  background: linear-gradient(
+    90deg,
+    #C9A96E 0%,
+    #C9A96E 30%,
+    #F4E8C1 50%,
+    #C9A96E 70%,
+    #C9A96E 100%
+  );
+  background-size: 300% 100%;
+  animation: goldShimmer 3.5s ease-in-out infinite;
+}
+
+/* ── Envelope intro — hold hero animations until video ends ─ */
+body.envelope-active .hero-frame,
+body.envelope-active .hero-names,
+body.envelope-active .hero-countdown,
+body.envelope-active .hero-scroll-cue {
+  animation-play-state: paused;
+}
+
+/* ── Reduced motion ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  [data-reveal].revealed {
+    opacity: 1;
+    transform: none;
+  }
+  .hero-frame,
+  .hero-names,
+  .hero-countdown,
+  .hero-scroll-cue {
+    animation: none;
+    opacity: 1;
+  }
+  .pulse-dot {
+    animation: none;
+  }
+  .polaroid {
+    transition: none;
+  }
+  .card-hover {
+    transition: none;
+  }
+  .botanical-drift,
+  .botanical-drift-slow,
+  .botanical-drift-alt,
+  .seal-float,
+  .gold-rule-shimmer {
+    animation: none;
+  }
+  .gold-rule-shimmer {
+    background: #C9A96E;
+  }
+}
