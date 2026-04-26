@@ -8,15 +8,21 @@ export default function EnvelopeIntro({ onReveal }) {
   const videoRef    = useRef(null)
   const fadeFired   = useRef(false)
   const revealFired = useRef(false)
-  const [tapped, setTapped] = useState(false)
-  const [fading, setFading] = useState(false)
-  const [done,   setDone]   = useState(false)
+  const [tapped,       setTapped]       = useState(false)
+  const [posterGone,   setPosterGone]   = useState(false)
+  const [fading,       setFading]       = useState(false)
+  const [done,         setDone]         = useState(false)
 
   const handleTap = useCallback(() => {
     if (tapped) return
     setTapped(true)
     videoRef.current?.play()
   }, [tapped])
+
+  // Only hide the poster once the video is actually rendering frames
+  const handlePlay = useCallback(() => {
+    setPosterGone(true)
+  }, [])
 
   const handleTimeUpdate = useCallback(() => {
     const t = videoRef.current?.currentTime ?? 0
@@ -73,6 +79,7 @@ export default function EnvelopeIntro({ onReveal }) {
         src="/envelope.mp4"
         playsInline
         preload="auto"
+        onPlay={handlePlay}
         onTimeUpdate={handleTimeUpdate}
         onEnded={handleEnded}
         style={{
@@ -92,8 +99,8 @@ export default function EnvelopeIntro({ onReveal }) {
         style={{
           position: 'absolute',
           inset: 0,
-          opacity: tapped ? 0 : 1,
-          transition: 'opacity 0.5s ease',
+          opacity: posterGone ? 0 : 1,
+          transition: 'opacity 0.8s ease',
           pointerEvents: 'none',
         }}
       >
