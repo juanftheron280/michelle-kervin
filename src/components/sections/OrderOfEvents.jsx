@@ -13,7 +13,7 @@ const events = [
 
 export default function OrderOfEvents() {
   return (
-    <section className="section-cream py-24 px-4 relative overflow-hidden">
+    <section id="the-day" className="section-cream py-24 px-4 relative overflow-hidden" style={{ scrollMarginTop: '60px' }}>
       {/* Botanical branch — right side */}
       <div className="absolute right-0 top-0 bottom-0 pointer-events-none hidden lg:flex items-center botanical-drift-slow" style={{ opacity: 0.06 }}>
         <BotanicalBranch color="#0D0D0D" style={{ width: '200px' }} />

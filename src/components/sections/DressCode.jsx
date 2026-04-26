@@ -55,7 +55,7 @@ function IllustrationCard({ src, alt, label, caption, revealDir, delay }) {
 
 export default function DressCode() {
   return (
-    <section className="section-dark py-24 px-4 relative overflow-hidden">
+    <section id="dress-code" className="section-dark py-24 px-4 relative overflow-hidden" style={{ scrollMarginTop: '60px' }}>
       {/* Botanical branch — right side */}
       <div className="absolute right-0 top-0 pointer-events-none hidden lg:block botanical-drift" style={{ opacity: 0.13 }}>
         <BotanicalBranch color="#F4EFE6" style={{ width: '200px' }} />

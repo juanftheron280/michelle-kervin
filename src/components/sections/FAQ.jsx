@@ -69,7 +69,7 @@ const FAQItem = ({ q, a, delay }) => {
 
 export default function FAQ() {
   return (
-    <section className="section-cream py-24 px-4 relative overflow-hidden">
+    <section id="faq" className="section-cream py-24 px-4 relative overflow-hidden" style={{ scrollMarginTop: '60px' }}>
       {/* Botanical branch — bottom-left watermark */}
       <div className="absolute left-0 bottom-0 pointer-events-none hidden lg:block botanical-drift-alt" style={{ opacity: 0.055 }}>
         <BotanicalBranch color="#0D0D0D" style={{ width: '180px' }} />

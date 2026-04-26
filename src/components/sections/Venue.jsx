@@ -5,7 +5,7 @@ export default function Venue() {
   const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(address)}&output=embed&z=15`
 
   return (
-    <section className="section-cream py-24 px-4 relative overflow-hidden">
+    <section id="venue" className="section-cream py-24 px-4 relative overflow-hidden" style={{ scrollMarginTop: '60px' }}>
       {/* Botanical branch — top-right corner */}
       <div className="absolute right-0 top-0 pointer-events-none hidden lg:block botanical-drift" style={{ opacity: 0.06, transform: 'scaleX(-1)' }}>
         <BotanicalBranch color="#0D0D0D" style={{ width: '180px' }} />

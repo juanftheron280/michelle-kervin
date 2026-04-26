@@ -25,7 +25,7 @@ const cards = [
 
 export default function LoveStory() {
   return (
-    <section className="section-cream py-24 px-4 relative overflow-hidden">
+    <section id="our-story" className="section-cream py-24 px-4 relative overflow-hidden" style={{ scrollMarginTop: '60px' }}>
       {/* Botanical background — bottom right */}
       <div className="absolute bottom-0 right-0 pointer-events-none botanical-drift" style={{ opacity: 0.065 }}>
         <BotanicalBranch color="#0D0D0D" />

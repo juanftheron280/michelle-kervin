@@ -392,7 +392,12 @@ body {
   animation: goldShimmer 3.5s ease-in-out infinite;
 }
 
-/* ── Envelope intro — hold hero animations until video ends ─ */
+/* ── Envelope intro — hold hero animations + hide nav until video ends ─ */
+body.envelope-active nav {
+  opacity: 0;
+  pointer-events: none;
+}
+
 body.envelope-active .hero-frame,
 body.envelope-active .hero-names,
 body.envelope-active .hero-countdown,

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import EnvelopeIntro from './components/EnvelopeIntro'
+import Nav from './components/Nav'
 import Hero from './components/sections/Hero'
 import LoveStory from './components/sections/LoveStory'
 import Gallery from './components/sections/Gallery'
@@ -49,6 +50,8 @@ export default function App() {
   return (
     <>
       {showIntro && <EnvelopeIntro onReveal={handleReveal} />}
+
+      <Nav />
 
       {/* Film grain texture overlay */}
       <div className="grain-overlay" aria-hidden="true" />

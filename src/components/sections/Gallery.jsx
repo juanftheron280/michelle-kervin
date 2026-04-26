@@ -31,7 +31,7 @@ export default function Gallery() {
   const visible = expanded ? photos : photos.slice(0, PREVIEW_COUNT)
 
   return (
-    <section className="section-dark py-24 px-4 relative overflow-hidden">
+    <section id="gallery" className="section-dark py-24 px-4 relative overflow-hidden" style={{ scrollMarginTop: '60px' }}>
       {/* Botanical wreath — centered watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none botanical-drift-slow" style={{ opacity: 0.12 }}>
         <FloralWreath color="#F4EFE6" style={{ width: '55vw', maxWidth: '500px', height: 'auto' }} />
