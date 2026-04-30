@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react'
 import EnvelopeIntro from './components/EnvelopeIntro'
 import Nav from './components/Nav'
 import Hero from './components/sections/Hero'
+import Venue from './components/sections/Venue'
+import DressCode from './components/sections/DressCode'
+import RSVP from './components/sections/RSVP'
+import VenueMap from './components/sections/VenueMap'
+import OrderOfEvents from './components/sections/OrderOfEvents'
+import PhotoUpload from './components/sections/PhotoUpload'
 import LoveStory from './components/sections/LoveStory'
 import Gallery from './components/sections/Gallery'
-import PhotoUpload from './components/sections/PhotoUpload'
-import OrderOfEvents from './components/sections/OrderOfEvents'
-import DressCode from './components/sections/DressCode'
-import Venue from './components/sections/Venue'
-import RSVP from './components/sections/RSVP'
 import FAQ from './components/sections/FAQ'
 
 // Only show the envelope intro on mobile viewports
@@ -58,13 +59,14 @@ export default function App() {
 
       <main>
         <Hero />
+        <Venue />
+        <DressCode />
+        <RSVP />
+        <VenueMap />
+        <OrderOfEvents />
+        <PhotoUpload />
         <LoveStory />
         <Gallery />
-        <PhotoUpload />
-        <OrderOfEvents />
-        <DressCode />
-        <Venue />
-        <RSVP />
         <FAQ />
       </main>
     </>

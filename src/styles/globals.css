@@ -12,34 +12,10 @@
 }
 
 @font-face {
-  font-family: 'Lora';
-  src: url('/fonts/Lora-Regular.ttf') format('truetype');
-  font-weight: 400;
+  font-family: 'Mirage';
+  src: url('/fonts/Mirage.otf') format('opentype');
+  font-weight: normal;
   font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Lora';
-  src: url('/fonts/Lora-Italic.ttf') format('truetype');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Lora';
-  src: url('/fonts/Lora-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Lora';
-  src: url('/fonts/Lora-BoldItalic.ttf') format('truetype');
-  font-weight: 700;
-  font-style: italic;
   font-display: swap;
 }
 
@@ -55,7 +31,7 @@ html {
 }
 
 body {
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Montserrat', sans-serif;
   background-color: #0D0D0D;
   color: #F4EFE6;
   -webkit-font-smoothing: antialiased;
@@ -68,8 +44,15 @@ body {
 ::-webkit-scrollbar-thumb { background: #C9A96E; border-radius: 3px; }
 
 /* ── Utilities ──────────────────────────────────────────── */
-.font-heading { font-family: 'Eyesome Script', cursive; }
-.font-body    { font-family: 'Lora', Georgia, serif; }
+.font-heading { font-family: 'Mirage', serif; font-weight: 100; font-synthesis: none; letter-spacing: 0.03em; }
+
+/* Soften Mirage visual weight on dark backgrounds */
+.section-dark .font-heading,
+.bg-ink .font-heading { --tw-text-opacity: 0.48; }
+
+/* Soften Mirage visual weight on cream backgrounds */
+.section-cream .font-heading { --tw-text-opacity: 0.42; }
+.font-body    { font-family: 'Montserrat', sans-serif; }
 
 .section-dark  { background-color: #0D0D0D; }
 .section-cream { background-color: #F4EFE6; }
@@ -83,7 +66,7 @@ body {
 }
 
 .section-label {
-  font-family: 'Lora', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 10px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -289,7 +272,7 @@ body {
   border: none;
   border-bottom: 1px solid rgba(201,169,110,0.4);
   color: #F4EFE6;
-  font-family: 'Lora', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   padding: 10px 0;
   outline: none;
@@ -311,7 +294,7 @@ body {
   border: none;
   border-bottom: 1px solid rgba(13,13,13,0.2);
   color: #1A1A1A;
-  font-family: 'Lora', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   padding: 10px 0;
   outline: none;

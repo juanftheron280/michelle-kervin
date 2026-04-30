@@ -3,36 +3,28 @@ import { FloralSprig, BotanicalBranch } from '../ui/FloralSvg'
 
 const faqs = [
   {
-    q: 'What should I wear?',
-    a: 'Formal and dress to impress. Warm winter tones are the vibe — think rich plum, forest green, mustard, camel, rust, mocha, and terracotta. Any warm, deep colour works beautifully. Please avoid any shade of white or black — those are reserved for the bride and groom.',
-  },
-  {
-    q: 'What time should I arrive?',
-    a: 'Arrival and welcome drinks begin at 12:30 PM. The ceremony starts at 1:00 PM, so please arrive on time so we can begin together. Late arrivals may need to wait until the ceremony is complete before being seated.',
-  },
-  {
-    q: 'Is there parking at the venue?',
-    a: 'Yes. Bell and Blossom has on-site parking available at 721 Klippan St, Montana, Pretoria. Signage will guide you from the entrance.',
-  },
-  {
-    q: 'Are children welcome?',
-    a: 'We adore your little ones, but this is an adults-only celebration. We hope you can arrange childcare for the day so you can be fully present and enjoy the evening with us.',
-  },
-  {
     q: 'Do you have a gift registry?',
     a: 'There is no formal registry, but if you would like to bless us with a gift, we love shopping at YuppieChef, Volpes, @Home, and Cielo. Your presence and well-wishes are truly the greatest gift.',
   },
   {
-    q: 'Will my dietary requirements be accommodated?',
-    a: 'Absolutely. Please indicate any dietary requirements or allergies in your RSVP form and our kitchen will take care of the rest. There is no need to select a menu in advance.',
-  },
-  {
-    q: 'By when should I RSVP?',
-    a: 'Please RSVP as soon as you can so we can finalise numbers with the venue. We will share a formal RSVP deadline closer to the date. The sooner, the better.',
+    q: 'What should I wear?',
+    a: 'Formal and dress to impress. Warm winter tones are the vibe: think rich plum, forest green, mustard, camel, rust, mocha, and terracotta. Any warm, deep colour works beautifully. Please avoid any shade of white or black. Those are reserved for the bride and groom.',
   },
   {
     q: 'Is there accommodation nearby?',
     a: 'Montana and the broader Pretoria North area have a good range of accommodation. We recommend searching Airbnb or Booking.com for places near Bell and Blossom. We will share more details as the date approaches.',
+  },
+  {
+    q: 'Can someone tag along with me?',
+    a: 'Kindly honour the invite admission number as sent out by the couple. Unconfirmed guests will not be allowed onto the property.',
+  },
+  {
+    q: 'What time should I arrive?',
+    a: 'Arrival and welcome drinks begin at 1:00 PM. Please arrive on time so we can begin together. Late arrivals may need to wait until the ceremony is complete before being seated.',
+  },
+  {
+    q: 'Will my dietary requirements be accommodated?',
+    a: 'Absolutely. Please indicate any dietary requirements or allergies in your RSVP form and our kitchen will take care of the rest. There is no need to select a menu in advance.',
   },
 ]
 
@@ -116,7 +108,10 @@ export default function FAQ() {
           className="font-heading text-ink/40"
           style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
         >
-          Melissa &amp; Kervin
+          Kervin &amp; Melissa
+        </p>
+        <p className="font-body text-[10px] tracking-[0.28em] uppercase text-ink/35 mt-2">
+          #CassimEverAfter
         </p>
         <p className="font-body text-[10px] tracking-[0.3em] uppercase text-ink/25 mt-2">
           30 July 2026 · Bell &amp; Blossom · Pretoria

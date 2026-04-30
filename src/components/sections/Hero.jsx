@@ -59,19 +59,30 @@ const Countdown = () => {
   const target = new Date('2026-07-30T13:00:00+02:00')
 
   const calc = () => {
-    const diff = target - new Date()
-    if (diff <= 0) return { d: 0, h: 0, m: 0, s: 0 }
+    const now = new Date()
+    if (target <= now) return { mo: 0, d: 0, h: 0, m: 0 }
+
+    let months = (target.getFullYear() - now.getFullYear()) * 12 + (target.getMonth() - now.getMonth())
+    // If advancing `now` by `months` overshoots the target, pull back one month
+    const testDate = new Date(now)
+    testDate.setMonth(testDate.getMonth() + months)
+    if (testDate > target) months--
+
+    const afterMonths = new Date(now)
+    afterMonths.setMonth(afterMonths.getMonth() + months)
+    const remaining = target - afterMonths
+
     return {
-      d: Math.floor(diff / 86400000),
-      h: Math.floor((diff % 86400000) / 3600000),
-      m: Math.floor((diff % 3600000) / 60000),
-      s: Math.floor((diff % 60000) / 1000),
+      mo: months,
+      d: Math.floor(remaining / 86400000),
+      h: Math.floor((remaining % 86400000) / 3600000),
+      m: Math.floor((remaining % 3600000) / 60000),
     }
   }
 
   const [t, setT] = useState(calc)
   useEffect(() => {
-    const id = setInterval(() => setT(calc()), 1000)
+    const id = setInterval(() => setT(calc()), 30000)
     return () => clearInterval(id)
   }, [])
 
@@ -84,10 +95,10 @@ const Countdown = () => {
       </p>
       <div className="flex items-start justify-center gap-4 md:gap-8">
         {[
-          { val: pad(t.d), label: 'Days' },
-          { val: pad(t.h), label: 'Hours' },
-          { val: pad(t.m), label: 'Minutes' },
-          { val: pad(t.s), label: 'Seconds' },
+          { val: pad(t.mo), label: 'Months' },
+          { val: pad(t.d),  label: 'Days' },
+          { val: pad(t.h),  label: 'Hours' },
+          { val: pad(t.m),  label: 'Minutes' },
         ].map(({ val, label }, i) => (
           <div key={label} className="flex items-start">
             <div className="flex flex-col items-center">
@@ -261,24 +272,29 @@ export default function Hero() {
       <div className="relative z-10 flex flex-col items-center px-4 w-full">
         <div
           className="relative flex items-center justify-center hero-frame"
-          style={{ width: 'min(380px, 90vw)', height: 'min(510px, 120vw)' }}
+          style={{ width: 'min(460px, 94vw)', height: 'min(610px, 148vw)' }}
         >
           <OvalFrame />
           <div className="relative z-10 text-center px-10 md:px-14">
-            <p className="section-label mb-5" style={{ color: 'rgba(244,239,230,0.55)', letterSpacing: '0.28em' }}>
-              With love, we invite you
+            <p className="section-label mb-4" style={{ color: 'rgba(244,239,230,0.55)', letterSpacing: '0.18em', fontSize: '9px', lineHeight: 1.9 }}>
+              You are cordially invited<br />
+              to the wedding celebration of<br />
+              Kervin &amp; Melissa
             </p>
             <h1
               className="font-heading text-cream leading-none hero-names"
               style={{ fontSize: 'clamp(3rem, 10vw, 4.5rem)' }}
             >
-              Melissa &amp; Kervin
+              Kervin &amp; Melissa
             </h1>
             <p
               className="font-heading text-cream/65 mt-1"
               style={{ fontSize: 'clamp(1.6rem, 5vw, 2.4rem)', lineHeight: 1.3 }}
             >
               Matrimony
+            </p>
+            <p className="font-body text-[9px] tracking-[0.3em] text-cream/35 uppercase mt-2">
+              #CassimEverAfter
             </p>
             <div className="gold-rule my-5" />
             <p className="font-body text-[11px] tracking-[0.22em] text-cream/50 uppercase">
@@ -293,13 +309,6 @@ export default function Hero() {
         <Countdown />
       </div>
 
-      {/* ── Scroll cue ──────────────────────────────────────── */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hero-scroll-cue">
-        <span className="section-label" style={{ color: '#F4EFE6' }}>Scroll</span>
-        <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
-          <path d="M8 0 L8 20 M2 14 L8 20 L14 14" stroke="#F4EFE6" strokeWidth="1" strokeLinecap="round"/>
-        </svg>
-      </div>
     </section>
   )
 }

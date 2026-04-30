@@ -7,6 +7,8 @@ const cardStyle = {
   transition: 'transform 0.45s cubic-bezier(0.16,1,0.3,1), box-shadow 0.45s cubic-bezier(0.16,1,0.3,1)',
   overflow: 'hidden',
   background: 'rgba(20,18,14,0.6)',
+  display: 'flex',
+  flexDirection: 'column',
 }
 
 const cardHoverStyle = {
@@ -14,21 +16,22 @@ const cardHoverStyle = {
   boxShadow: '0 4px 8px rgba(0,0,0,0.3), 0 16px 40px rgba(0,0,0,0.55), 0 40px 80px rgba(0,0,0,0.35), 0 0 0 1px rgba(201,169,110,0.35)',
 }
 
-function IllustrationCard({ src, alt, label, caption, revealDir, delay }) {
+function IllustrationCard({ src, alt, label, caption, revealDir, delay, restriction }) {
   return (
-    <div data-reveal={revealDir} data-delay={delay}>
+    <div data-reveal={revealDir} data-delay={delay} className="flex flex-col h-full">
       <div
         style={cardStyle}
+        className="flex-1"
         onMouseEnter={e => Object.assign(e.currentTarget.style, cardHoverStyle)}
         onMouseLeave={e => Object.assign(e.currentTarget.style, cardStyle)}
       >
-        {/* Full image — no cropping */}
-        <div style={{ overflow: 'hidden', position: 'relative' }}>
+        {/* Image container — full natural height, no crop */}
+        <div style={{ overflow: 'hidden', position: 'relative', flexShrink: 0 }}>
           <img
             src={src}
             alt={alt}
             className="w-full block"
-            style={{ height: 'auto', filter: 'contrast(1.03) brightness(0.97)', transition: 'transform 0.6s cubic-bezier(0.16,1,0.3,1)', display: 'block' }}
+            style={{ filter: 'contrast(1.03) brightness(0.97)', transition: 'transform 0.6s cubic-bezier(0.16,1,0.3,1)', display: 'block' }}
             onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.03)' }}
             onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)' }}
           />
@@ -43,10 +46,23 @@ function IllustrationCard({ src, alt, label, caption, revealDir, delay }) {
         </div>
 
         {/* Label inside card */}
-        <div className="px-6 py-5 text-center">
+        <div className="px-6 py-5 text-center flex-1 flex flex-col items-center justify-center">
           <p className="section-label mb-1" style={{ color: '#C9A96E' }}>{label}</p>
           <div className="w-6 h-px bg-gold/30 mx-auto my-2" />
           <p className="font-body text-[12px] text-cream/45 italic">{caption}</p>
+          {restriction && (
+            <p
+              className="font-body text-[10px] tracking-[0.22em] uppercase mt-3"
+              style={{
+                color: 'rgba(201,169,110,0.7)',
+                border: '1px solid rgba(201,169,110,0.3)',
+                display: 'inline-block',
+                padding: '3px 10px',
+              }}
+            >
+              {restriction}
+            </p>
+          )}
         </div>
       </div>
     </div>
@@ -79,32 +95,12 @@ export default function DressCode() {
             Dress Code
           </h2>
           <p className="font-body text-sm text-cream/45 italic mt-5 max-w-md mx-auto leading-relaxed" data-reveal data-delay="4">
-            Formal attire. Warm winter tones encouraged. Please avoid any shade of white or black — those are reserved for the bride and groom.
+            Formal attire. Warm winter tones encouraged. Please avoid any shade of white or black. Those are reserved for the bride and groom.
           </p>
         </div>
 
-        {/* Ladies + Gentlemen illustration cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 mb-16">
-          <IllustrationCard
-            src="/dresscode-ladies.jpeg"
-            alt="Ladies dress code — formal gowns in warm tones"
-            label="Ladies"
-            caption="Formal gowns and elegant dresses in warm, earthy tones."
-            revealDir="left"
-            delay="1"
-          />
-          <IllustrationCard
-            src="/dresscode-men.jpeg"
-            alt="Gentlemen dress code — formal suits in warm tones"
-            label="Gentlemen"
-            caption="Suits and blazers in rich, deep colours. No black."
-            revealDir="right"
-            delay="2"
-          />
-        </div>
-
-        {/* Colour palette card */}
-        <div data-reveal data-delay="1">
+        {/* Colour palette card — first */}
+        <div data-reveal data-delay="1" className="mb-16">
           <p className="font-body text-[11px] tracking-[0.28em] uppercase text-cream/35 text-center mb-6">
             Colour Inspiration
           </p>
@@ -126,11 +122,10 @@ export default function DressCode() {
               e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.4), 0 16px 48px rgba(0,0,0,0.35)'
             }}
           >
-            {/* Zoom in to crop the ivory margins around the swatches */}
             <div style={{ overflow: 'hidden', lineHeight: 0 }}>
               <img
                 src="/dresscode-palette.png"
-                alt="Colour palette — warm winter tones for the wedding"
+                alt="Colour palette, warm winter tones for the wedding"
                 className="w-full block"
                 style={{ transform: 'scale(1.05)', transformOrigin: 'center center' }}
               />
@@ -139,6 +134,28 @@ export default function DressCode() {
           <p className="font-body text-[10px] tracking-widest uppercase text-cream/25 text-center mt-5">
             Any warm, earthy tone within this range is welcome
           </p>
+        </div>
+
+        {/* Ladies + Gentlemen illustration cards — stacked, full image */}
+        <div className="grid grid-cols-1 gap-10 max-w-2xl mx-auto">
+          <IllustrationCard
+            src="/dresscode-ladies.jpeg"
+            alt="Ladies dress code, formal gowns in warm tones"
+            label="Ladies"
+            caption="Formal gowns and elegant dresses in warm, earthy tones."
+            revealDir="left"
+            delay="1"
+            restriction="No white"
+          />
+          <IllustrationCard
+            src="/dresscode-men.jpeg"
+            alt="Gentlemen dress code, formal suits in warm tones"
+            label="Gentlemen"
+            caption="Suits and blazers in rich, deep colours."
+            revealDir="right"
+            delay="2"
+            restriction="No black"
+          />
         </div>
       </div>
     </section>

@@ -45,7 +45,7 @@ export default function RSVP() {
             RSVP
           </h2>
           <p className="font-body text-sm italic text-cream/40 mt-3" data-reveal data-delay="5">
-            Please respond at your earliest convenience.
+            Please respond no later than 19 June.
           </p>
         </div>
 
@@ -150,7 +150,7 @@ export default function RSVP() {
               {/* Message */}
               <div>
                 <label className="section-label block mb-2" style={{ color: 'rgba(201,169,110,0.7)' }}>
-                  A Message for Melissa &amp; Kervin
+                  A Message for Kervin &amp; Melissa
                 </label>
                 <textarea
                   name="message"

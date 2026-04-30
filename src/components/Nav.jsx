@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 
 const links = [
-  { label: 'Our Story',  href: '#our-story' },
-  { label: 'Gallery',    href: '#gallery' },
-  { label: 'The Day',    href: '#the-day' },
-  { label: 'Dress Code', href: '#dress-code' },
-  { label: 'Venue',      href: '#venue' },
+  { label: 'Date & Venue', href: '#venue' },
+  { label: 'Dress Code',   href: '#dress-code' },
+  { label: 'The Day',      href: '#the-day' },
+  { label: 'Our Story',    href: '#our-story' },
+  { label: 'Gallery',      href: '#gallery' },
 ]
 
 export default function Nav() {
@@ -65,7 +65,7 @@ export default function Nav() {
             textAlign: 'center',
           }}
         >
-          M &amp; K
+          K | M
         </a>
 
         {/* Desktop center links */}
@@ -78,7 +78,7 @@ export default function Nav() {
               key={l.href}
               href={l.href}
               style={{
-                fontFamily: 'Lora, Georgia, serif',
+                fontFamily: 'Montserrat, sans-serif',
                 fontSize: '10px',
                 letterSpacing: '0.26em',
                 textTransform: 'uppercase',
@@ -104,7 +104,7 @@ export default function Nav() {
             href="#rsvp"
             className="hidden md:inline-block"
             style={{
-              fontFamily: 'Lora, Georgia, serif',
+              fontFamily: 'Montserrat, sans-serif',
               fontSize: '10px',
               letterSpacing: '0.26em',
               textTransform: 'uppercase',
@@ -194,7 +194,7 @@ export default function Nav() {
           marginBottom: '32px',
           letterSpacing: '0.02em',
         }}>
-          M &amp; K
+          K | M
         </p>
 
         {/* Gold divider */}
@@ -210,7 +210,7 @@ export default function Nav() {
               display: 'block',
               marginBottom: l.isRsvp ? 0 : '28px',
               marginTop: l.isRsvp ? '36px' : 0,
-              fontFamily: l.isRsvp ? 'Lora, Georgia, serif' : 'Eyesome Script, cursive',
+              fontFamily: l.isRsvp ? 'Montserrat, sans-serif' : 'Eyesome Script, cursive',
               fontSize: l.isRsvp ? '10px' : '2rem',
               letterSpacing: l.isRsvp ? '0.3em' : '0.03em',
               textTransform: l.isRsvp ? 'uppercase' : 'none',
