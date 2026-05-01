@@ -1,58 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 
-/* ── Scalloped oval frame ──────────────────────────────── */
-const generateScallops = (cx, cy, rx, ry, n = 72) => {
-  const pts = []
-  for (let i = 0; i < n; i++) {
-    const a = (2 * Math.PI * i) / n
-    pts.push({ x: cx + rx * Math.cos(a), y: cy + ry * Math.sin(a) })
-  }
-  return pts
-}
 
-const OvalFrame = () => {
-  const cx = 200, cy = 255, rx = 172, ry = 230
-  const scallops = generateScallops(cx, cy, rx, ry, 72)
-
-  return (
-    <svg
-      viewBox="0 0 400 510"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="absolute inset-0 w-full h-full pointer-events-none"
-    >
-      {scallops.map((p, i) => (
-        <circle key={`o${i}`} cx={p.x} cy={p.y} r="2.8" fill="#F4EFE6" opacity="0.55" />
-      ))}
-      <ellipse cx={cx} cy={cy} rx={rx - 18} ry={ry - 18} stroke="#F4EFE6" strokeWidth="0.7" opacity="0.4" />
-
-      {/* Top botanical sprigs */}
-      <path d="M155 45 C145 30 140 18 148 8" stroke="#F4EFE6" strokeWidth="0.9" strokeLinecap="round" opacity="0.65"/>
-      <path d="M152 50 C135 40 128 32 133 22" stroke="#F4EFE6" strokeWidth="0.8" strokeLinecap="round" opacity="0.6"/>
-      <path d="M158 55 C142 58 134 54 136 44" stroke="#F4EFE6" strokeWidth="0.8" strokeLinecap="round" opacity="0.6"/>
-      <ellipse cx="147" cy="7" rx="5" ry="9" transform="rotate(-30 147 7)" stroke="#F4EFE6" strokeWidth="0.7" fill="none" opacity="0.55"/>
-      <ellipse cx="130" cy="20" rx="5" ry="8" transform="rotate(-10 130 20)" stroke="#F4EFE6" strokeWidth="0.7" fill="none" opacity="0.5"/>
-      <ellipse cx="133" cy="42" rx="4" ry="7" transform="rotate(15 133 42)" stroke="#F4EFE6" strokeWidth="0.7" fill="none" opacity="0.5"/>
-
-      <path d="M245 45 C255 30 260 18 252 8" stroke="#F4EFE6" strokeWidth="0.9" strokeLinecap="round" opacity="0.65"/>
-      <path d="M248 50 C265 40 272 32 267 22" stroke="#F4EFE6" strokeWidth="0.8" strokeLinecap="round" opacity="0.6"/>
-      <path d="M242 55 C258 58 266 54 264 44" stroke="#F4EFE6" strokeWidth="0.8" strokeLinecap="round" opacity="0.6"/>
-      <ellipse cx="253" cy="7" rx="5" ry="9" transform="rotate(30 253 7)" stroke="#F4EFE6" strokeWidth="0.7" fill="none" opacity="0.55"/>
-      <ellipse cx="270" cy="20" rx="5" ry="8" transform="rotate(10 270 20)" stroke="#F4EFE6" strokeWidth="0.7" fill="none" opacity="0.5"/>
-      <ellipse cx="267" cy="42" rx="4" ry="7" transform="rotate(-15 267 42)" stroke="#F4EFE6" strokeWidth="0.7" fill="none" opacity="0.5"/>
-
-      {/* Bottom botanical sprigs */}
-      <path d="M160 462 C150 472 148 482 155 490" stroke="#F4EFE6" strokeWidth="0.8" strokeLinecap="round" opacity="0.55"/>
-      <path d="M200 468 C200 478 200 486 200 494" stroke="#F4EFE6" strokeWidth="0.8" strokeLinecap="round" opacity="0.55"/>
-      <path d="M240 462 C250 472 252 482 245 490" stroke="#F4EFE6" strokeWidth="0.8" strokeLinecap="round" opacity="0.55"/>
-      <ellipse cx="153" cy="492" rx="5" ry="8" transform="rotate(20 153 492)" stroke="#F4EFE6" strokeWidth="0.7" fill="none" opacity="0.45"/>
-      <ellipse cx="247" cy="492" rx="5" ry="8" transform="rotate(-20 247 492)" stroke="#F4EFE6" strokeWidth="0.7" fill="none" opacity="0.45"/>
-
-      <line x1="135" y1="108" x2="265" y2="108" stroke="#F4EFE6" strokeWidth="0.5" opacity="0.3"/>
-      <line x1="135" y1="400" x2="265" y2="400" stroke="#F4EFE6" strokeWidth="0.5" opacity="0.3"/>
-    </svg>
-  )
-}
 
 /* ── Countdown ────────────────────────────────────────── */
 const Countdown = () => {
@@ -270,40 +218,20 @@ export default function Hero() {
 
       {/* ── Main content ──────────────────────────────────── */}
       <div className="relative z-10 flex flex-col items-center px-4 w-full">
-        <div
-          className="relative flex items-center justify-center hero-frame"
-          style={{ width: 'min(460px, 94vw)', height: 'min(610px, 148vw)' }}
-        >
-          <OvalFrame />
-          <div className="relative z-10 text-center px-10 md:px-14">
-            <p className="section-label mb-4" style={{ color: 'rgba(244,239,230,0.55)', letterSpacing: '0.18em', fontSize: '9px', lineHeight: 1.9 }}>
-              You are cordially invited<br />
-              to the wedding celebration of<br />
-              Kervin &amp; Melissa
-            </p>
-            <h1
-              className="font-heading text-cream leading-none hero-names"
-              style={{ fontSize: 'clamp(3rem, 10vw, 4.5rem)' }}
-            >
-              Kervin &amp; Melissa
-            </h1>
-            <p
-              className="font-heading text-cream/65 mt-1"
-              style={{ fontSize: 'clamp(1.6rem, 5vw, 2.4rem)', lineHeight: 1.3 }}
-            >
-              Matrimony
-            </p>
-            <p className="font-body text-[9px] tracking-[0.3em] text-cream/35 uppercase mt-2">
-              #CassimEverAfter
-            </p>
-            <div className="gold-rule my-5" />
-            <p className="font-body text-[11px] tracking-[0.22em] text-cream/50 uppercase">
-              30 July 2026
-            </p>
-            <p className="font-body text-[10px] tracking-[0.15em] text-cream/35 mt-1">
-              Bell &amp; Blossom · Pretoria
-            </p>
-          </div>
+        <div className="text-center hero-frame">
+          <p className="section-label mb-6" style={{ color: 'rgba(244,239,230,0.55)', letterSpacing: '0.18em', fontSize: '9px' }}>
+            You are cordially invited to the wedding celebration of
+          </p>
+          <h1
+            className="font-heading text-cream leading-none hero-names"
+            style={{ fontSize: 'clamp(3rem, 10vw, 4.5rem)' }}
+          >
+            Kervin &amp; Melissa
+          </h1>
+          <div className="gold-rule my-5" />
+          <p className="font-body text-[10px] tracking-[0.3em] text-cream/45 uppercase">
+            #CassimEverAfter
+          </p>
         </div>
 
         <Countdown />

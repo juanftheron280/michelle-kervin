@@ -17,8 +17,8 @@ export default {
         muted: '#9B8E7A',
       },
       fontFamily: {
-        heading: ['Mirage', 'serif'],
-        body: ['Montserrat', 'sans-serif'],
+        heading: ['Eyesome Script', 'cursive'],
+        body: ['Tenor Sans', 'sans-serif'],
       },
     },
   },

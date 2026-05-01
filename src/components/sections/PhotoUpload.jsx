@@ -39,17 +39,15 @@ export default function PhotoUpload() {
 
         {/* CTA Button */}
         <a
-          href="#"
+          href="https://photos.app.goo.gl/1SX42vvqmyLxDV239"
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-block font-body text-[11px] tracking-[0.3em] uppercase text-ink bg-cream px-10 py-4 transition-all duration-300 hover:bg-gold hover:text-ink"
           data-reveal
           data-delay="6"
         >
           Upload Photos
         </a>
-
-        <p className="font-body text-[10px] tracking-widest text-cream/25 uppercase mt-5" data-reveal data-delay="7">
-          Link to be configured
-        </p>
       </div>
     </section>
   )

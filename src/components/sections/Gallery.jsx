@@ -1,20 +1,12 @@
 import { BotanicalBranch, FloralWreath } from '../ui/FloralSvg'
 import ImageGallery from '../ui/image-gallery'
 
-const photos = [
+const row1 = [
   '/photos/edit_aug_6801.jpg',
-  '/photos/edit_aug_6811.jpg',
   '/photos/edit_aug_6817.jpg',
-  '/photos/edit_aug_6875.jpg',
+  '/photos/edit_aug_6811.jpg',
   '/photos/edit_aug_6836.jpg',
-  '/photos/edit_aug_6916.jpg',
-  '/photos/edit_aug_6923.jpg',
-  '/photos/edit_aug_6952.jpg',
-  '/photos/edit_aug_7010.jpg',
 ]
-
-const row1 = photos.slice(0, 5)
-const row2 = photos.slice(5)
 
 export default function Gallery() {
   return (
@@ -49,10 +41,9 @@ export default function Gallery() {
         </p>
       </div>
 
-      {/* Two rows of expanding gallery */}
-      <div className="flex flex-col gap-3 w-full relative z-10" data-reveal>
+      {/* Single row expanding gallery */}
+      <div className="w-full relative z-10" data-reveal>
         <ImageGallery photos={row1} />
-        <ImageGallery photos={row2} />
       </div>
     </section>
   )

@@ -31,7 +31,7 @@ html {
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Tenor Sans', sans-serif;
   background-color: #0D0D0D;
   color: #F4EFE6;
   -webkit-font-smoothing: antialiased;
@@ -44,15 +44,8 @@ body {
 ::-webkit-scrollbar-thumb { background: #C9A96E; border-radius: 3px; }
 
 /* ── Utilities ──────────────────────────────────────────── */
-.font-heading { font-family: 'Mirage', serif; font-weight: 100; font-synthesis: none; letter-spacing: 0.03em; }
-
-/* Soften Mirage visual weight on dark backgrounds */
-.section-dark .font-heading,
-.bg-ink .font-heading { --tw-text-opacity: 0.48; }
-
-/* Soften Mirage visual weight on cream backgrounds */
-.section-cream .font-heading { --tw-text-opacity: 0.42; }
-.font-body    { font-family: 'Montserrat', sans-serif; }
+.font-heading { font-family: 'Eyesome Script', cursive; font-weight: normal; }
+.font-body    { font-family: 'Tenor Sans', sans-serif; }
 
 .section-dark  { background-color: #0D0D0D; }
 .section-cream { background-color: #F4EFE6; }
@@ -66,7 +59,7 @@ body {
 }
 
 .section-label {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Tenor Sans', sans-serif;
   font-size: 10px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -272,7 +265,7 @@ body {
   border: none;
   border-bottom: 1px solid rgba(201,169,110,0.4);
   color: #F4EFE6;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Tenor Sans', sans-serif;
   font-size: 14px;
   padding: 10px 0;
   outline: none;
@@ -294,7 +287,7 @@ body {
   border: none;
   border-bottom: 1px solid rgba(13,13,13,0.2);
   color: #1A1A1A;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Tenor Sans', sans-serif;
   font-size: 14px;
   padding: 10px 0;
   outline: none;

@@ -119,7 +119,7 @@ export default function Venue() {
 
       {/* Map reference */}
       <p className="text-center font-body text-[12px] italic text-ink/40" data-reveal>
-        Find directions via the venue map further down the page.
+        Find directions via the venue map below.
       </p>
     </section>
   )

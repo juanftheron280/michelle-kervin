@@ -127,7 +127,6 @@ export default function DressCode() {
                 src="/dresscode-palette.png"
                 alt="Colour palette, warm winter tones for the wedding"
                 className="w-full block"
-                style={{ transform: 'scale(1.05)', transformOrigin: 'center center' }}
               />
             </div>
           </div>
@@ -139,7 +138,7 @@ export default function DressCode() {
         {/* Ladies + Gentlemen illustration cards — stacked, full image */}
         <div className="grid grid-cols-1 gap-10 max-w-2xl mx-auto">
           <IllustrationCard
-            src="/dresscode-ladies.jpeg"
+            src="/dresscode-ladies.png"
             alt="Ladies dress code, formal gowns in warm tones"
             label="Ladies"
             caption="Formal gowns and elegant dresses in warm, earthy tones."
@@ -148,7 +147,7 @@ export default function DressCode() {
             restriction="No white"
           />
           <IllustrationCard
-            src="/dresscode-men.jpeg"
+            src="/dresscode-men.png"
             alt="Gentlemen dress code, formal suits in warm tones"
             label="Gentlemen"
             caption="Suits and blazers in rich, deep colours."

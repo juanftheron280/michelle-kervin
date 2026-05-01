@@ -22,10 +22,10 @@ export default function RSVP() {
   }
 
   return (
-    <section className="section-dark py-24 px-4 relative overflow-hidden" id="rsvp">
+    <section className="section-cream py-24 px-4 relative overflow-hidden" id="rsvp">
       {/* Botanical wreath — centered background watermark */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none botanical-drift-slow" style={{ opacity: 0.10 }}>
-        <FloralWreath color="#F4EFE6" style={{ width: '60vw', maxWidth: '520px', height: 'auto' }} />
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none botanical-drift-slow" style={{ opacity: 0.07 }}>
+        <FloralWreath color="#0D0D0D" style={{ width: '60vw', maxWidth: '520px', height: 'auto' }} />
       </div>
 
       <div className="max-w-lg mx-auto relative z-10">
@@ -37,21 +37,21 @@ export default function RSVP() {
           <p className="section-label mb-3" data-reveal data-delay="2">Your Reply Is Requested</p>
           <div className="gold-rule mb-4" data-reveal data-delay="3" />
           <h2
-            className="font-heading text-cream"
+            className="font-heading text-ink"
             style={{ fontSize: 'clamp(2.8rem, 7vw, 4.5rem)', lineHeight: 1.1 }}
             data-reveal
             data-delay="4"
           >
             RSVP
           </h2>
-          <p className="font-body text-sm italic text-cream/40 mt-3" data-reveal data-delay="5">
+          <p className="font-body text-sm italic text-ink/50 mt-3" data-reveal data-delay="5">
             Please respond no later than 19 June.
           </p>
         </div>
 
         {submitted ? (
           /* Thank you state */
-          <div className="text-center border border-gold/25 p-10">
+          <div className="text-center border border-gold/25 p-10 bg-[#111111]">
             <span className="absolute top-0 left-0 w-5 h-5 border-t border-l border-gold/40" />
             <span className="absolute top-0 right-0 w-5 h-5 border-t border-r border-gold/40" />
             <span className="absolute bottom-0 left-0 w-5 h-5 border-b border-l border-gold/40" />
