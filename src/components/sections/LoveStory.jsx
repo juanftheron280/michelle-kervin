@@ -11,7 +11,7 @@ const cards = [
   {
     number: '02',
     title: 'The Kiss & The Years',
-    body: 'At his cousin\'s sixteenth birthday party, before departing, they shared a special moment and kissed. Neither planned it. It became their favourite story. Reconnecting at university gave them something they never had before: time. Through seasons of difficulty and loss, they held each other up and discovered they were in it for the long haul.',
+    body: 'At his cousin\'s sixteenth birthday party, before departing, they shared a special moment and kissed. Neither planned it, but it\'s become their most cherished story. Reconnecting at university gave them something they never had before: time. Through seasons of difficulty and loss, they held each other up and discovered they were in it for the long haul.',
     photo: '/love-story-2.jpeg',
     rot: '1.5deg',
   },
