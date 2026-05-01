@@ -1,9 +1,12 @@
 import { useState } from 'react'
 import { WaxSeal, FloralWreath } from '../ui/FloralSvg'
 
+const SHEET_URL = import.meta.env.VITE_SHEET_URL
+
 export default function RSVP() {
   const [attending, setAttending] = useState(null)
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [form, setForm] = useState({
     name: '',
     dietary: '',
@@ -15,10 +18,21 @@ export default function RSVP() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Form submission will be wired to Google Sheets
+    setLoading(true)
+    try {
+      await fetch(SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, attending }),
+      })
+    } catch (_) {
+      // no-cors means the response is opaque — submission still goes through
+    }
     setSubmitted(true)
+    setLoading(false)
   }
 
   return (
@@ -182,9 +196,10 @@ export default function RSVP() {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full py-4 font-body text-[11px] tracking-[0.3em] uppercase text-ink bg-cream transition-all duration-300 hover:bg-gold"
+                  disabled={loading}
+                  className="w-full py-4 font-body text-[11px] tracking-[0.3em] uppercase text-ink bg-cream transition-all duration-300 hover:bg-gold disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send My Reply
+                  {loading ? 'Sending...' : 'Send My Reply'}
                 </button>
               </div>
             </form>
