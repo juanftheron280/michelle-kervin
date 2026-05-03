@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 
 
 
@@ -139,6 +139,19 @@ const particles = [
 /* ── Hero ────────────────────────────────────────────────── */
 export default function Hero() {
   const bgRef = useRef(null)
+  const [showIntro, setShowIntro] = useState(false)
+  const [introFading, setIntroFading] = useState(false)
+
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      setShowIntro(true)
+    }
+  }, [])
+
+  const dismissIntro = useCallback(() => {
+    setIntroFading(true)
+    setTimeout(() => setShowIntro(false), 800)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -151,6 +164,33 @@ export default function Hero() {
   }, [])
 
   return (
+    <>
+    {showIntro && (
+      <div
+        className="fixed inset-0 z-50 bg-ink"
+        style={{
+          transition: 'opacity 0.8s ease',
+          opacity: introFading ? 0 : 1,
+          pointerEvents: introFading ? 'none' : 'auto',
+        }}
+      >
+        <video
+          autoPlay
+          muted
+          playsInline
+          onEnded={dismissIntro}
+          className="w-full h-full object-cover"
+        >
+          <source src="/hero-mobile-intro.mp4" type="video/mp4" />
+        </video>
+        <button
+          onClick={dismissIntro}
+          className="absolute bottom-8 right-6 font-body text-[10px] tracking-[0.25em] uppercase text-cream/40 hover:text-cream/70 transition-colors"
+        >
+          Skip
+        </button>
+      </div>
+    )}
     <section className="relative min-h-screen flex flex-col items-center justify-center bg-ink overflow-hidden">
 
       {/* ── Responsive background photos ──────────────────── */}
@@ -238,5 +278,6 @@ export default function Hero() {
       </div>
 
     </section>
+    </>
   )
 }
